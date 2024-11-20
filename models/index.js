@@ -1,114 +1,117 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema(
+  {
     firstName: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     lastName: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     email: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     phoneNumber: {
-        type: String,
-        required: true,
-        unique: true
+      type: String,
+      required: true,
+      unique: true,
     },
     password: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     profilePicture: {
-        type: String,
-        required: false
+      type: String,
+      default:
+        "https://raw.githubusercontent.com/devRajeshThapa/DeraSewa-Backend/refs/heads/main/assets/default_user_profile_picture.jpg",
     },
-},
-    { timestamps: true }
-
+  },
+  { timestamps: true }
 );
 
-const roomSchema = new mongoose.Schema({
+const roomSchema = new mongoose.Schema(
+  {
     hosterID: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     hosterPhoneNumber: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     roomCoordinate: {
-        type: Array,
-        required: true
+      type: Array,
+      required: true,
     },
     address: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     flat: {
-        type: Boolean,
+      type: Boolean,
     },
     apartment: {
-        type: Boolean,
+      type: Boolean,
     },
     floorNumber: {
-        type: Number,
-        required: true
+      type: Number,
+      required: true,
     },
     bedRoomNumber: {
-        type: Number,
-        required: true
+      type: Number,
+      required: true,
     },
     bathRoom: {
-        type: Boolean,
-        required: true
+      type: Boolean,
+      required: true,
     },
     kitchen: {
-        type: Boolean,
-        required: true
+      type: Boolean,
+      required: true,
     },
     parking: {
-        type: Boolean,
-        required: true
+      type: Boolean,
+      required: true,
     },
     price: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     description: {
-        type: String,
+      type: String,
     },
     roomPictures: {
-        type: Array,
-        required: true
-    }
-    
-},
+      type: Array,
+      required: true,
+    },
+  },
 
-    { timestamps: true }
+  { timestamps: true }
 );
 
-const verificationSchema = new mongoose.Schema({
+const verificationSchema = new mongoose.Schema(
+  {
     email: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     OTP: {
-        type: Number,
-        required: true
-    }
-})
-
+      type: Number,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 
 const userModel = mongoose.model("User", userSchema);
 const roomModel = mongoose.model("Room", roomSchema);
-const verificationModel = mongoose.model("Verify", verificationSchema)
+const verificationModel = mongoose.model("Verify", verificationSchema);
 
 module.exports = {
-    userModel,
-    roomModel,
-    verificationModel
+  userModel,
+  roomModel,
+  verificationModel,
 };
