@@ -23,6 +23,14 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    referralCode: {
+      type: String,
+      required: true
+    },
+    deraCoin:{
+      type: Number,
+      default: 0
+    },
     profilePicture: {
       type: String,
       default:
